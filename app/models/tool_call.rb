@@ -1,0 +1,2 @@
+class ToolCall < ApplicationRecord
+end
