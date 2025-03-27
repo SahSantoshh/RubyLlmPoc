@@ -1,3 +1,11 @@
+<turbo-stream action="prepend" target="chat-list">
+  <template>
+    <li class="p-2 border-b">
+      <%= link_to "Chat ##{@chat.id}", chat_path(@chat), class: "block py-2 px-4 bg-blue-100 rounded-md hover:bg-blue-200" %>
+    </li>
+  </template>
+</turbo-stream>
+
 <turbo-stream action="append" target="chat-container">
   <template>
     <%= render @chat %>

@@ -1,8 +1,18 @@
 <div class="w-1/4 bg-gray-100 p-4 overflow-y-auto border-r">
   <h2 class="font-bold mb-4">Chats</h2>
+
+  <%= button_to "New Chat", chats_path, method: :post, remote: true, class: "w-full bg-blue-500 text-white p-2 rounded-lg mb-4 hover:bg-blue-600 transition" %>
+
   <div class="space-y-2">
-    <% @chats.each do |chat| %>
-      <%= link_to "Chat #{chat.id}", chat_path(chat), class: "block py-2 px-4 bg-blue-100 rounded-md hover:bg-blue-200" %>
-    <% end %>
+    <%# @chats.each do |chat| %>
+    <%#= link_to "Chat #{chat.id}", chat_path(chat), class: "block py-2 px-4 bg-blue-100 rounded-md hover:bg-blue-200" %>
+    <%# end %>
+    <ul id="chat-list">
+      <% @chats.each do |chat| %>
+        <li class="p-2">
+          <%= link_to "Chat ##{chat.id}", chat_path(chat), class: "block py-2 px-4 bg-blue-100 rounded-md hover:bg-blue-200" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

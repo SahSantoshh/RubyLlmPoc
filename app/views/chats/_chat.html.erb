@@ -1,26 +1,59 @@
+<%# if @chat %>
+<!--  <h2 class="font-bold text-xl mb-4">Chat #<%#= @chat.id %></h2>-->
+
+<!--  <div class="overflow-y-auto space-y-4 mb-4 text-gray-700">-->
+<%# @chat.messages.each do |message| %>
+<!--      <div class="p-4">-->
+<!--        <div class="p-2 mb-2">-->
+<%# if message.role == 'assistant' %>
+<!--            <p><strong>AI:</strong> <%#= message.content %></p>-->
+<%# else %>
+<!--            <p class="bg-gray-100 p-4 rounded-lg shadow-lg"><strong>You:</strong> <%#= message.content %></p>-->
+<%# end %>
+<!--        </div>-->
+<!--      </div>-->
+<%# end %>
+<!--  </div>-->
+
+<!--   Chat Input Field at the Bottom -->
+<!--  <div class="flex items-center mt-4 border-t pt-4">-->
+<%#= form_with model: [@chat, @chat.messages.build], local: false, id: "chat-form", data: { turbo_stream: true }, class: "flex items-center w-full" do %>
+<%#= text_field_tag :content, nil, placeholder: "Type a message...", class: "flex-grow p-2 border rounded-l-md" %>
+<%#= submit_tag "Send", class: "p-2 bg-blue-500 text-white rounded-r-md" %>
+<%# end %>
+<!--  </div>-->
+<%# else %>
+<!--  <p>Select a chat to view messages.</p>-->
+<%# end %>
 <% if @chat %>
-  <h2 class="font-bold text-xl mb-4">Chat #<%= @chat.id %></h2>
+  <div class="flex flex-col h-full">
+    <!-- Chat Title -->
+    <h2 class="font-bold text-xl mb-4">Chat #<%= @chat.id %></h2>
 
-  <div class="overflow-y-auto space-y-4 mb-4 text-gray-700">
-    <% @chat.messages.each do |message| %>
-      <div class="p-4">
-        <div class="p-2 mb-2">
-          <% if message.role == 'assistant' %>
-            <p><strong>AI:</strong> <%= message.content %></p>
-          <% else %>
-            <p class="bg-gray-100 p-4 rounded-lg shadow-lg"><strong>You:</strong> <%= message.content %></p>
-          <% end %>
+    <!-- Messages Container (Scrollable) -->
+    <div class="flex-grow overflow-y-auto space-y-4 mb-4 text-gray-700" id="messages-container">
+      <% @chat.messages.each do |message| %>
+        <div class="p-4">
+          <div class="p-2 mb-2">
+            <% if message.role == 'assistant' %>
+              <div class="prose">
+                <p><strong>AI:</strong> <%= markdown(message.content) %></p>
+              </div>
+            <% else %>
+              <p class="bg-gray-100 p-4 rounded-lg shadow-lg"><strong>You:</strong> <%= message.content %></p>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <!-- Chat Input Field at the Bottom -->
-  <div class="flex items-center mt-4 border-t pt-4">
-    <%= form_with model: [@chat, @chat.messages.build], local: false, id: "chat-form", data: { turbo_stream: true }, class: "flex items-center w-full" do %>
-      <%= text_field_tag :content, nil, placeholder: "Type a message...", class: "flex-grow p-2 border rounded-l-md" %>
-      <%= submit_tag "Send", class: "p-2 bg-blue-500 text-white rounded-r-md" %>
-    <% end %>
+    <!-- Chat Input Field (Fixed at Bottom) -->
+    <div class="shadow-lg bg-red p-4 bg-white sticky bottom-0 w-full">
+      <%= form_with model: [@chat, @chat.messages.build], local: false, id: "chat-form", data: { turbo_stream: true }, class: "flex items-center w-full" do %>
+        <%= text_field_tag :content, nil, placeholder: "Type a message...", class: "flex-grow p-2 border rounded-lg" %>
+        <%= submit_tag "Send", class: "ml-4 p-2 px-4 bg-blue-500 text-white rounded-lg" %>
+      <% end %>
+    </div>
   </div>
 <% else %>
   <p>Select a chat to view messages.</p>

@@ -8,10 +8,11 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @message = @chat.ask(params[:content])
+    @chat = Chat.create
+
     respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to @chat } # Add this line to handle regular requests
+      format.turbo_stream # Handles real-time updates
+      format.html { redirect_to chat_path(@chat) }
     end
   end
 
