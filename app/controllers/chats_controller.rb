@@ -20,6 +20,14 @@ class ChatsController < ApplicationController
     @chats = Chat.includes(:messages).order(created_at: :asc) # List all chats for sidebar
   end
 
+  def destroy
+    @chat.destroy
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@chat) }
+      format.html { redirect_to chats_path, notice: "Chat was successfully deleted." }
+    end
+  end
+
 
   private
 

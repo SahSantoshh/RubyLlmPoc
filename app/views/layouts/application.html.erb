@@ -22,7 +22,12 @@
   </head>
 
   <body>
-  <main class="container mx-auto px-5 flex">
+  <main class="mx-auto px-5 flex bg-gray-50 min-h-screen flex-col justify-center items-center">
+    <% if notice %>
+      <div class="bg-green-500 text-white p-4 rounded-md">
+        <%= notice %>
+      </div>
+    <% end %>
     <%= yield %>
   </main>
   </body>

@@ -71,3 +71,5 @@ group :development do
   gem "web-console"
 end
 gem "commonmarker", "~> 2.2"
+
+gem "heroicons", "~> 2.0"
