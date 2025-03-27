@@ -47,6 +47,9 @@ gem "thruster", require: false
 # LLMs Manager ;)
 gem "ruby_llm", "~> 1.0"
 
+# ENVs
+gem "dotenv", "~> 3.1"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "byebug", "~> 12.0"

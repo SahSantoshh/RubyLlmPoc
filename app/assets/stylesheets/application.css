@@ -8,3 +8,25 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+/* Optional: Tailwind styling */
+.message {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.message p {
+    margin: 0;
+}
+
+.message strong {
+    font-weight: bold;
+}
+
+.message p:first-child {
+    background-color: #e0e0e0; /* For user messages */
+}
+
+.message p:last-child {
+    background-color: #f0f0f0; /* For AI messages */
+}
