@@ -22,8 +22,9 @@ class ChatsController < ApplicationController
 
   def destroy
     @chat.destroy
+
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(@chat) }
+      format.turbo_stream
       format.html { redirect_to chats_path, notice: "Chat was successfully deleted." }
     end
   end
@@ -32,6 +33,7 @@ class ChatsController < ApplicationController
   private
 
   def set_chat
+    byebug
     @chat = if params[:id].present?
               Chat.find(params[:id])
     elsif Chat.count.positive?
