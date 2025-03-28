@@ -14,7 +14,9 @@
     </div>
 
     <!-- Messages Container (Scrollable) -->
-    <div class="flex-grow overflow-y-auto space-y-4 mb-4 text-gray-700" id="messages-container">
+    <div class="flex-grow overflow-y-auto space-y-4 mb-4 text-gray-700" id="messages-container"
+         data-controller="scroll"
+         data-action="turbo:frame-load->scroll#scrollToBottom turbo:submit-end->scroll#scrollToBottom">
       <% @chat.messages.each do |message| %>
         <div class="p-4">
           <div class="p-2 mb-2">
@@ -32,9 +34,9 @@
 
     <!-- Chat Input Field (Fixed at Bottom) -->
     <div class="shadow-lg bg-red p-4 bg-white sticky bottom-0 w-full rounded-lg">
-      <%= form_with model: [@chat, @chat.messages.build], local: false, id: "chat-form", data: { turbo_stream: true }, class: "flex items-center w-full" do %>
-        <%= text_field_tag :content, nil, placeholder: "Type a message...", class: "flex-grow p-2 border rounded-lg" %>
-        <%= submit_tag "Send", class: "ml-4 p-2 px-4 bg-blue-500 text-white rounded-lg" %>
+      <%= form_with model: [@chat, @chat.messages.build], local: false, id: "chat-form", data: { turbo_stream: true }, class: "flex items-center w-full" do |form| %>
+        <%= form.text_field :content, placeholder: "Type a message...", class: "flex-grow p-2 border rounded-lg" %>
+        <%= form.submit "Send", class: "ml-4 p-2 px-4 bg-blue-500 text-white rounded-lg" %>
       <% end %>
     </div>
   </div>

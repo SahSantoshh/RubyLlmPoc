@@ -9,5 +9,13 @@
 <turbo-stream action="append" target="chat-container">
   <template>
     <%= render @chat %>
+    <script>
+      setTimeout(() => {
+        const messagesContainer = document.getElementById("messages-container");
+        if (messagesContainer) {
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+      }, 100);
+    </script>
   </template>
 </turbo-stream>

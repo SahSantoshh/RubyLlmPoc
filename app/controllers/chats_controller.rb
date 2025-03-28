@@ -8,7 +8,8 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @chat = Chat.create
+    byebug
+    @chat = Chat.create(model_id: chat_params)
 
     respond_to do |format|
       format.turbo_stream # Handles real-time updates
@@ -32,8 +33,11 @@ class ChatsController < ApplicationController
 
   private
 
+  def chat_params
+    params[:model_id] || RubyLLM.config.default_model
+  end
+
   def set_chat
-    byebug
     @chat = if params[:id].present?
               Chat.find(params[:id])
     elsif Chat.count.positive?
