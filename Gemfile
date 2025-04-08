@@ -45,7 +45,7 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 # LLMs Manager ;)
-gem "ruby_llm", "~> 1.0"
+gem "ruby_llm", "~> 1.1"
 
 # ENVs
 gem "dotenv", "~> 3.1"
