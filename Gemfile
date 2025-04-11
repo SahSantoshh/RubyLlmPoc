@@ -72,4 +72,4 @@ group :development do
 end
 gem "commonmarker", "~> 2.2"
 
-gem "heroicons", "~> 2.0"
+gem "heroicons", "~> 2.1"
