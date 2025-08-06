@@ -125,7 +125,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    heroicons (2.0.1)
+    heroicons (2.2.0)
       nokogiri
       railties (>= 5.2)
     i18n (1.14.7)
@@ -404,7 +404,7 @@ DEPENDENCIES
   commonmarker (~> 2.3)
   debug
   dotenv (~> 3.1)
-  heroicons (~> 2.0)
+  heroicons (~> 2.2)
   importmap-rails
   jbuilder
   kamal
