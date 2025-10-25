@@ -57,7 +57,7 @@ group :development, :test do
   gem "pry", "~> 0.15.2"
 
   # annotate models
-  gem "annotaterb", "~> 4.19"
+  gem "annotaterb", "~> 4.20"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
