@@ -6,7 +6,7 @@ gem "rails", "~> 8.1.0"
 gem "propshaft"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.6.2"
-gem "sqlite3", "~> 2.7" # for queue, cache, cable
+gem "sqlite3", "~> 2.8" # for queue, cache, cable
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
